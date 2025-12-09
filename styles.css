@@ -1,0 +1,709 @@
+/* ============================================
+   RETRO PORTFOLIO - CSS STYLING
+   Theme: Classic Terminal (Phosphor Green)
+   ============================================ */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ============================================ */
+:root {
+  /* Color Palette - Softer Amber Terminal Theme 
+     WCAG AA Accessibility Compliant:
+     - Softer amber tones that are easier on the eyes
+     - All text/background combinations meet WCAG AA standards
+  */
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #1a1a1a;
+  --color-text-primary: #d4a574;
+  --color-text-secondary: #e8b887;
+  --color-accent: #e8b887;
+  --color-glow: rgba(212, 165, 116, 0.4);
+  --color-border: #d4a574;
+  
+  /* Typography */
+  --font-primary: 'Courier New', 'Consolas', 'Monaco', monospace;
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 18px;
+  --font-size-xlarge: 24px;
+  --font-size-xxlarge: 32px;
+  --line-height-base: 1.5;
+  --line-height-tight: 1.2;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  
+  /* Layout */
+  --max-width-content: 1000px;
+  --border-width: 3px;
+  --border-radius: 0;
+}
+
+/* ============================================
+   CSS RESET & BASE STYLES
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   SKIP LINK FOR KEYBOARD NAVIGATION
+   ============================================ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background-color: var(--color-text-secondary);
+  color: var(--color-bg-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 10000;
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: 0 0 20px var(--color-glow);
+}
+
+.skip-link:focus {
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  background-image: 
+    radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 50%, #000000 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  min-height: 100vh;
+  padding: var(--spacing-md);
+}
+
+/* ============================================
+   TYPOGRAPHY BASE STYLES
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  line-height: var(--line-height-tight);
+  color: var(--color-text-secondary);
+}
+
+h1 {
+  font-size: var(--font-size-xxlarge);
+}
+
+h2 {
+  font-size: var(--font-size-xlarge);
+}
+
+h3 {
+  font-size: var(--font-size-large);
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+  text-shadow: 0 0 8px var(--color-glow);
+}
+
+a:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+/* Enhanced focus styles for all interactive elements */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+/* Focus-visible for modern browsers (only show on keyboard focus) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+/* Remove outline for mouse clicks (modern browsers) */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ============================================
+   LAYOUT CONTAINER
+   ============================================ */
+main {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+/* ============================================
+   HEADER COMPONENT
+   ============================================ */
+header {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  box-shadow: 0 0 20px var(--color-glow);
+}
+
+.site-title {
+  font-size: var(--font-size-xxlarge);
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--color-glow),
+               0 0 20px var(--color-glow);
+  margin-bottom: var(--spacing-sm);
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.tagline {
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  font-style: italic;
+  text-shadow: 0 0 5px var(--color-glow);
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px var(--color-glow),
+                 0 0 20px var(--color-glow);
+  }
+  to {
+    text-shadow: 0 0 15px var(--color-glow),
+                 0 0 30px var(--color-glow),
+                 0 0 40px var(--color-glow);
+  }
+}
+
+/* ============================================
+   SECTION STYLES (COMMON)
+   ============================================ */
+section {
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+section h2 {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-border);
+  text-shadow: 0 0 8px var(--color-glow);
+}
+
+/* ============================================
+   ABOUT ME SECTION
+   ============================================ */
+#about .about-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.profile-photo-container {
+  text-align: center;
+}
+
+.profile-photo {
+  max-width: 200px;
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: 0 0 15px var(--color-glow);
+  filter: contrast(1.2) brightness(0.9);
+}
+
+.bio-text {
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+}
+
+.bio-text p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.bio-text p:first-child,
+.bio-text p:last-child {
+  color: var(--color-text-secondary);
+  font-weight: bold;
+}
+
+/* ============================================
+   CERTIFICATIONS SECTION
+   ============================================ */
+.certifications-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.certification {
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  transition: all 0.3s ease;
+}
+
+.certification:hover {
+  box-shadow: 0 0 15px var(--color-glow);
+  transform: translateY(-2px);
+}
+
+.cert-title {
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-large);
+  text-shadow: 0 0 5px var(--color-glow);
+}
+
+.cert-issuer {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  font-style: italic;
+}
+
+/* ============================================
+   RESUME SECTION
+   ============================================ */
+#resume .resume-container {
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+.resume-description {
+  margin-bottom: var(--spacing-md);
+  font-style: italic;
+}
+
+.resume-link {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.resume-link:hover {
+  background-color: var(--color-text-secondary);
+  color: var(--color-bg-primary);
+  box-shadow: 0 0 20px var(--color-glow),
+              0 0 30px var(--color-glow);
+  transform: translateY(-2px);
+}
+
+.resume-link:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.resume-link:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 20px var(--color-glow),
+              0 0 30px var(--color-glow);
+}
+
+.resume-link:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 20px var(--color-glow),
+              0 0 30px var(--color-glow);
+}
+
+/* ============================================
+   PROJECTS SECTION
+   ============================================ */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.project {
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  transition: all 0.3s ease;
+}
+
+.project:hover {
+  box-shadow: 0 0 20px var(--color-glow);
+  transform: translateY(-4px);
+}
+
+.project:focus-within {
+  box-shadow: 0 0 20px var(--color-glow);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.project-title {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  text-shadow: 0 0 5px var(--color-glow);
+}
+
+.project-description {
+  margin-bottom: var(--spacing-md);
+  line-height: var(--line-height-base);
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+}
+
+.project-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.project-link {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  background-color: var(--color-text-secondary);
+  color: var(--color-bg-primary);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.project-link:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+.project-link:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+/* ============================================
+   RETRO VISUAL EFFECTS
+   ============================================ */
+
+/* CRT Scan Lines Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Screen Glow Effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Text Glow for All Text Elements */
+h1, h2, h3 {
+  text-shadow: 0 0 8px var(--color-glow);
+}
+
+p, a, span {
+  text-shadow: 0 0 3px var(--color-glow);
+}
+
+/* Screen Flicker Animation (Subtle) */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.98; }
+}
+
+body {
+  animation: flicker 0.15s infinite;
+}
+
+/* ============================================
+   FOOTER COMPONENT
+   ============================================ */
+footer {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  box-shadow: 0 0 15px var(--color-glow);
+  text-align: center;
+}
+
+.footer-content {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  background-color: var(--color-text-secondary);
+  color: var(--color-bg-primary);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.footer-link:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+.footer-link:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 15px var(--color-glow);
+}
+
+.copyright,
+.footer-message {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-message {
+  font-style: italic;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================================ */
+
+/* Mobile devices (≤768px) - Base styles above are mobile-first */
+/* Touch target minimum sizes for mobile accessibility */
+@media screen and (max-width: 768px) {
+  /* Ensure all interactive elements meet 44x44px minimum */
+  a, button, .resume-link, .project-link, .footer-link {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Resume link - ensure adequate touch target */
+  .resume-link {
+    padding: 12px var(--spacing-lg);
+  }
+  
+  /* Project links - ensure adequate touch target */
+  .project-link {
+    padding: 12px var(--spacing-sm);
+  }
+  
+  /* Footer links - ensure adequate touch target */
+  .footer-link {
+    padding: 12px var(--spacing-sm);
+  }
+}
+
+/* Adjustments for very small screens */
+@media screen and (max-width: 480px) {
+  :root {
+    --font-size-base: 14px;
+    --font-size-xxlarge: 24px;
+    --font-size-xlarge: 20px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+  }
+  
+  body {
+    padding: var(--spacing-sm);
+  }
+  
+  header {
+    padding: var(--spacing-md);
+  }
+  
+  .site-title {
+    font-size: var(--font-size-xlarge);
+    letter-spacing: 1px;
+  }
+  
+  section {
+    padding: var(--spacing-md);
+  }
+  
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet devices (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  #about .about-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .profile-photo-container {
+    flex: 0 0 250px;
+  }
+  
+  .bio-text {
+    flex: 1;
+  }
+}
+
+/* Desktop devices (>1024px) */
+@media screen and (min-width: 1025px) {
+  .projects-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  #about .about-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+  
+  .profile-photo-container {
+    flex: 0 0 300px;
+  }
+  
+  .bio-text {
+    flex: 1;
+  }
+}
+
+/* CRT Flicker Effect - Triggered by JavaScript */
+.crt-flicker {
+  animation: crtFlickerEffect 0.1s ease-in-out;
+}
+
+@keyframes crtFlickerEffect {
+  0% { opacity: 1; }
+  25% { opacity: 0.95; }
+  50% { opacity: 0.98; }
+  75% { opacity: 0.93; }
+  100% { opacity: 1; }
+}
+
+/* Smooth scrolling for browsers that don't support scroll-behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for keyboard navigation after smooth scroll */
+:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* Skip link focus visible */
+.skip-link:focus {
+  clip: auto;
+  height: auto;
+  width: auto;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
