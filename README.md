@@ -1,5 +1,7 @@
 # Retro Portfolio
 
+https://haymondm.github.io/Portfolio/
+
 A nostalgic, retro-themed personal portfolio website inspired by vintage computing aesthetics. Features CRT screen effects, terminal-style layouts, and a phosphor green color scheme reminiscent of classic monitors.
 
 ## Features
