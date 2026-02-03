@@ -31,10 +31,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Initialize retro toggle functionality
+    initRetroToggle();
+
     // Optional: Subtle CRT flicker effect
     // Performance-conscious implementation using CSS animation trigger
     initCRTFlicker();
 });
+
+/**
+ * Initialize retro effects toggle
+ * Allows users to turn off retro effects for a cleaner, professional look
+ */
+function initRetroToggle() {
+    const toggleButton = document.getElementById('retro-toggle');
+    const toggleText = toggleButton.querySelector('.toggle-text');
+    const body = document.body;
+    
+    // Check for saved preference
+    const retroDisabled = localStorage.getItem('retro-disabled') === 'true';
+    
+    // Apply saved state
+    if (retroDisabled) {
+        body.classList.add('retro-disabled');
+        toggleText.textContent = '[ RETRO: OFF ]';
+        toggleButton.setAttribute('aria-pressed', 'false');
+    } else {
+        toggleButton.setAttribute('aria-pressed', 'true');
+    }
+    
+    // Toggle functionality
+    toggleButton.addEventListener('click', () => {
+        const isDisabled = body.classList.contains('retro-disabled');
+        
+        if (isDisabled) {
+            // Enable retro effects
+            body.classList.remove('retro-disabled');
+            toggleText.textContent = '[ RETRO: ON ]';
+            toggleButton.setAttribute('aria-pressed', 'true');
+            localStorage.setItem('retro-disabled', 'false');
+        } else {
+            // Disable retro effects
+            body.classList.add('retro-disabled');
+            toggleText.textContent = '[ RETRO: OFF ]';
+            toggleButton.setAttribute('aria-pressed', 'false');
+            localStorage.setItem('retro-disabled', 'true');
+        }
+    });
+}
 
 /**
  * Initialize subtle CRT flicker effect
@@ -56,6 +100,13 @@ function initCRTFlicker() {
     
     // Trigger subtle flicker at random intervals (infrequent)
     function triggerFlicker() {
+        // Don't flicker if retro effects are disabled
+        if (body.classList.contains('retro-disabled')) {
+            // Schedule next check
+            setTimeout(triggerFlicker, 2000);
+            return;
+        }
+        
         body.classList.add('crt-flicker');
         
         // Remove class after brief moment

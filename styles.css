@@ -22,6 +22,7 @@
   
   /* Typography */
   --font-primary: 'Courier New', 'Consolas', 'Monaco', monospace;
+  --font-body: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   --font-size-base: 16px;
   --font-size-small: 14px;
   --font-size-large: 18px;
@@ -82,7 +83,7 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-body);
   line-height: var(--line-height-base);
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
@@ -97,6 +98,7 @@ body {
    TYPOGRAPHY BASE STYLES
    ============================================ */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
   font-weight: bold;
   line-height: var(--line-height-tight);
   color: var(--color-text-secondary);
@@ -112,6 +114,21 @@ h2 {
 
 h3 {
   font-size: var(--font-size-large);
+}
+
+/* Keep monospace for specific retro elements */
+.site-title,
+.tagline,
+section h2,
+.project-title,
+.cert-title,
+.resume-link,
+.project-link,
+.footer-link,
+.retro-toggle,
+.bio-text p:first-child,
+.bio-text p:last-child {
+  font-family: var(--font-primary);
 }
 
 p {
@@ -184,6 +201,37 @@ header {
   border: var(--border-width) solid var(--color-border);
   background-color: var(--color-bg-secondary);
   box-shadow: 0 0 20px var(--color-glow);
+  position: relative;
+}
+
+.header-controls {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+}
+
+.retro-toggle {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  border: 2px solid var(--color-border);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 3px var(--color-glow);
+}
+
+.retro-toggle:hover {
+  background-color: var(--color-text-secondary);
+  color: var(--color-bg-primary);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+.retro-toggle:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  box-shadow: 0 0 15px var(--color-glow);
 }
 
 .site-title {
@@ -472,6 +520,7 @@ body::before {
   );
   pointer-events: none;
   z-index: 9999;
+  transition: opacity 0.3s ease;
 }
 
 /* Screen Glow Effect */
@@ -489,15 +538,18 @@ body::after {
   );
   pointer-events: none;
   z-index: 9998;
+  transition: opacity 0.3s ease;
 }
 
 /* Text Glow for All Text Elements */
 h1, h2, h3 {
   text-shadow: 0 0 8px var(--color-glow);
+  transition: text-shadow 0.3s ease;
 }
 
 p, a, span {
   text-shadow: 0 0 3px var(--color-glow);
+  transition: text-shadow 0.3s ease;
 }
 
 /* Screen Flicker Animation (Subtle) */
@@ -508,6 +560,46 @@ p, a, span {
 
 body {
   animation: flicker 0.15s infinite;
+}
+
+/* ============================================
+   RETRO EFFECTS DISABLED STATE
+   ============================================ */
+body.retro-disabled::before,
+body.retro-disabled::after {
+  opacity: 0;
+}
+
+body.retro-disabled {
+  animation: none;
+  background-image: none;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+body.retro-disabled h1,
+body.retro-disabled h2,
+body.retro-disabled h3,
+body.retro-disabled p,
+body.retro-disabled a,
+body.retro-disabled span {
+  text-shadow: none;
+}
+
+body.retro-disabled .site-title {
+  animation: none;
+  text-shadow: none;
+}
+
+body.retro-disabled section,
+body.retro-disabled header,
+body.retro-disabled footer {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.retro-disabled .resume-link:hover,
+body.retro-disabled .project-link:hover,
+body.retro-disabled .footer-link:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* ============================================
@@ -623,6 +715,11 @@ footer {
   
   header {
     padding: var(--spacing-md);
+  }
+  
+  .header-controls {
+    position: static;
+    margin-bottom: var(--spacing-sm);
   }
   
   .site-title {
