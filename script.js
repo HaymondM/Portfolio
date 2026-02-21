@@ -34,8 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize retro toggle functionality
     initRetroToggle();
 
-    // Initialize contact form functionality
-    initContactForm();
+    // Initialize contact form functionality (if form exists)
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        initContactForm();
+    }
+
+    // Initialize collapsible skills functionality
+    initSkillsToggle();
 
     // Optional: Subtle CRT flicker effect
     // Performance-conscious implementation using CSS animation trigger
@@ -379,4 +385,43 @@ function initCRTFlicker() {
     
     // Start flicker cycle after initial delay
     setTimeout(triggerFlicker, 5000);
+}
+/**
+ * Initialize collapsible skills functionality
+ * Allows users to expand/collapse skill categories to save space
+ */
+function initSkillsToggle() {
+    const toggleButtons = document.querySelectorAll('.skill-category-toggle');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            const targetId = button.getAttribute('aria-controls');
+            const targetElement = document.getElementById(targetId);
+            const indicator = button.querySelector('.toggle-indicator');
+            
+            if (targetElement) {
+                // Toggle expanded state
+                button.setAttribute('aria-expanded', !isExpanded);
+                
+                if (isExpanded) {
+                    // Collapse
+                    targetElement.classList.add('collapsed');
+                    indicator.textContent = '[+]';
+                } else {
+                    // Expand
+                    targetElement.classList.remove('collapsed');
+                    indicator.textContent = '[-]';
+                }
+            }
+        });
+        
+        // Handle keyboard navigation
+        button.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                button.click();
+            }
+        });
+    });
 }
