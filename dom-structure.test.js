@@ -51,7 +51,7 @@ describe('DOM Structure Unit Tests', () => {
     const resumeLink = document.querySelector('.resume-link');
     expect(resumeLink).not.toBeNull();
     expect(resumeLink.tagName.toLowerCase()).toBe('a');
-    expect(resumeLink.getAttribute('href')).toBe('assets/resume.pdf');
+    expect(resumeLink.getAttribute('href')).toBe('assets/Marshall_Haymond_RESUME.pdf');
   });
 
   test('Resume link opens in new tab', () => {
