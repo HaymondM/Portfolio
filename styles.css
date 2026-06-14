@@ -317,6 +317,108 @@ section h2 {
 }
 
 /* ============================================
+   EXPERIENCE SECTION
+   ============================================ */
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.job {
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+}
+
+.job-header {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.job-title {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-large);
+  text-shadow: 0 0 5px var(--color-glow);
+  margin-bottom: var(--spacing-xs);
+}
+
+.job-meta {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.job-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.job-bullets li {
+  padding-left: var(--spacing-md);
+  position: relative;
+  line-height: var(--line-height-base);
+  font-size: var(--font-size-small);
+}
+
+.job-bullets li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--color-text-secondary);
+  font-family: var(--font-primary);
+  font-weight: bold;
+}
+
+/* ============================================
+   EDUCATION SECTION
+   ============================================ */
+.education-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.degree {
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+}
+
+.degree-header {
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.degree-title {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-large);
+  text-shadow: 0 0 5px var(--color-glow);
+  margin-bottom: var(--spacing-xs);
+}
+
+.degree-meta {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.degree-coursework {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-base);
+  margin-bottom: 0;
+}
+
+/* ============================================
    CERTIFICATIONS SECTION
    ============================================ */
 .certifications-container {
